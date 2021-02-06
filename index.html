@@ -1,0 +1,63 @@
+<!doctype html>
+<html>
+<head>
+<meta charset="utf_8">
+<title>Rappel fin de séance</title>
+<link rel="preconnect" href="https://fonts.gstatic.com">
+<link href="https://fonts.googleapis.com/css2?family=Press+Start+2P&display=swap" rel="stylesheet">
+<style>
+html,body{
+height:100%;
+margin:0;
+background-color:#000000;
+color:#00ff00;
+font-family:'Press Start 2P',cursive;
+font-size:100px;
+}
+#div1{
+position:fixed;
+}
+</style>
+</head>
+<body>
+<div id="div1">00:00</div>
+<script>
+var div1=document.getElementById("div1");
+
+function clock(){
+
+var ww=window.innerWidth;
+var wh=window.innerHeight;
+var div1w=div1.offsetWidth;
+var div1h=div1.offsetHeight;
+div1.style.left=(Math.round(ww/2)-(div1w/2))+"px";
+div1.style.top=(Math.round(wh/2)-(div1h/2))+"px";
+var d1=new Date();
+var h1=d1.getHours();
+var m1=d1.getMinutes();
+var s1=d1.getSeconds();
+if(h1<10){h1="0"+h1;}
+if(m1<10){m1="0"+m1;}
+if(s1<10){s1="0"+s1;}
+var time1=h1+":"+m1+":"+s1;
+
+var d2=new Date(d1.getTime()-382100);
+var h2=d2.getHours();
+var m2=d2.getMinutes();
+var s2=d2.getSeconds();
+if(h2<10){h2="0"+h2;}
+if(m2<10){m2="0"+m2;}
+if(s2<10){s2="0"+s2;}
+var time2=h2+":"+m2+":"+s2;
+div1.innerHTML=time2;
+document.title=time2;
+
+if(time2=="15:00:00"||time2=="16:00:00"||time2=="17:00:00"){
+window.alert("Il est "+time2+" !");
+}
+
+}
+setInterval(clock,5);
+</script>
+</body>
+</html>
